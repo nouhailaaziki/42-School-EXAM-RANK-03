@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 15:11:08 by noaziki           #+#    #+#             */
-/*   Updated: 2025/04/29 11:41:10 by noaziki          ###   ########.fr       */
+/*   Created: 2025/05/22 10:57:50 by noaziki           #+#    #+#             */
+/*   Updated: 2025/05/22 10:58:38 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,9 @@ int ft_hexodecimal(unsigned int n)
 int ft_printf(const char *str, ... )
 {
     va_list list;
-    int i;
-    int count;
+    int i = 0;
+    int count = 0;
 
-    count = 0;
-    i = 0;
     va_start(list, str);
     while(str[i] != '\0')
     {
@@ -92,17 +90,11 @@ int ft_printf(const char *str, ... )
         {
             i++;
             if(str[i] == 'd')
-            {
                 count += ft_putnbr(va_arg(list, int));
-            }
             else if(str[i] == 'x')
-            {
                 count += ft_hexodecimal(va_arg(list, unsigned int));
-            }
             else if(str[i] == 's')
-            {
                 count += ft_putstr(va_arg(list, char *));
-            }
             else
                 write(1, &str[i], 1);
         }
